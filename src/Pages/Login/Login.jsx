@@ -1,12 +1,28 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../Sheard/Navbar/Navbar";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+const {login} = useContext(AuthContext);
+
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
     console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
+    const email = form.get('email')
+    const password = form.get('password')
     console.log(form);
+    
+    login( email, password)
+    .then(result=>console.log(result.user))
+    .catch(error=>console.log(error))
+
+
+
+
+
   };
 
   return (
