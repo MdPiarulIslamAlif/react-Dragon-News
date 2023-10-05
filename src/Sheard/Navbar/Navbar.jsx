@@ -8,9 +8,8 @@ const Navbar = () => {
 
   //handle signOut
   const handleSignOut = () => {
+    console.log("signOut");
     logOut()
-    .then()
-    .catch()
   };
 
   const navLinks = (
@@ -23,6 +22,9 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink to="/career">Career</NavLink>
+      </li>
+      <li>
+        <NavLink to="/addicted">Addicted</NavLink>
       </li>
       <li>
         <NavLink to="/login">Login</NavLink>
@@ -67,6 +69,7 @@ const Navbar = () => {
               <img src={userImage} />
             </div>
           </label>
+
           {user ? (
             <button onClick={handleSignOut} className="btn">
               SignOut
@@ -76,6 +79,7 @@ const Navbar = () => {
               <button className="btn">Login</button>
             </Link>
           )}
+
         </div>
       </div>
     </div>

@@ -24,6 +24,7 @@ const routes = createBrowserRouter([
             <News></News>{" "}
           </PrivateRoute>
         ),
+        loader: () => fetch("/news.json"),
       },
       {
         path: "/login",

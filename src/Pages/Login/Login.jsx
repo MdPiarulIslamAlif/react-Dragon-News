@@ -2,14 +2,15 @@ import { Link, Navigate, useLocation } from "react-router-dom";
 import Navbar from "../../Sheard/Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { getAuth } from "firebase/auth";
+
 
 const Login = () => {
-const { login, logOut } = useContext(AuthContext);
+const { login } = useContext(AuthContext);
 
 //location form private router 
 const location = useLocation();
-console.log('location form login from ',location);
+
+// console.log('location form login from ',location);
 
 
   const handleOnSubmit = (e) => {
@@ -27,17 +28,6 @@ console.log('location form login from ',location);
       Navigate(location ?.state ? location.state : '/')
     })
     .catch(error=>console.log(error))
-//logOut from AuthProvider
-
-  logOut()
-  .then(()=>{})
-  .catch(error=>{
-    console.log(error);
-  })
-
-
-
-
   };
 
   return (
