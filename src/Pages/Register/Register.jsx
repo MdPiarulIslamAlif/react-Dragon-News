@@ -9,7 +9,6 @@ const Register = () => {
   const {createUser} = useContext(AuthContext);
 
 
-
   const handleRegister = (e) => {
     e.preventDefault();
     console.log(e.currentTarget);
@@ -21,6 +20,7 @@ const Register = () => {
     const password = form.get("password");
     console.log(name, photo, email, password);
 
+    
     //register from AuthProvider
     createUser(email,password)
     .then(result=>{
@@ -29,9 +29,6 @@ const Register = () => {
     .catch(error=>{
       console.log(error.message);
     })
-
-
-
 
 
 

@@ -1,10 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import Navbar from "../../Sheard/Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { getAuth } from "firebase/auth";
 
 const Login = () => {
-const {login} = useContext(AuthContext);
+const { login, logOut } = useContext(AuthContext);
+
+//location form private router 
+const location = useLocation();
+console.log('location form login from ',location);
 
 
   const handleOnSubmit = (e) => {
@@ -15,10 +20,20 @@ const {login} = useContext(AuthContext);
     const password = form.get('password')
     console.log(form);
     
+// login form AuthProvider
     login( email, password)
-    .then(result=>console.log(result.user))
+    .then(result=>{
+      console.log(result.user);
+      Navigate(location ?.state ? location.state : '/')
+    })
     .catch(error=>console.log(error))
+//logOut from AuthProvider
 
+  logOut()
+  .then(()=>{})
+  .catch(error=>{
+    console.log(error);
+  })
 
 
 
